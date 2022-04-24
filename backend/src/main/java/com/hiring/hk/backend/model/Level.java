@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Data
@@ -12,14 +13,13 @@ import java.util.Set;
 @Table(name = "level")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Level {
+public class Level implements Serializable {
+
+    private static final long serialVersionUID = -3777160902809687228L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String levelName;
-
-//    @OneToMany(mappedBy="level")
-//    private Set<SubLevel> subLevels;
 }

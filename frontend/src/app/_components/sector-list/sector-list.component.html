@@ -1,0 +1,39 @@
+<div class="panel panel-primary">
+    <br><br>
+  
+    <!-- <button (click) = "createUser()"  class="btn btn-success">Add User</button> -->
+    <button (click) = "createSector()" class="btn btn-info" style="margin-left: 5px" >Add Sector</button>
+  
+    <br><br>
+    <div class="panel-body">
+      <h3> User List </h3>
+        <table class = "table table-striped">
+            <thead>
+                <tr>
+                    <th> ID</th>
+                    <th> Sector Name </th>
+                    <th> Level </th>
+                    <th> Sub Level </th>
+                    <th> Sub Sub Level </th>
+                    <th> Action </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor = "let sector of sectors" >
+                    <td> {{ sector.id }} </td>
+                    <td> {{ sector.sectorName }} </td>
+                    <td> {{ sector.level.levelName }} </td>
+                    <td> {{ sector.subLevel.subLevelName}} </td>
+                    <td> {{ sector.subSubLevel.subSubLevelName}} </td>
+                    <td>
+                        <button (click) = "updateSector(sector.id)" class = "btn btn-info"> Update</button>
+                        <button (click) = "deleteSector(sector.id)" class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
+                  
+                    </td>
+
+                    
+                </tr>
+            </tbody>
+        </table>
+  </div>
+  </div>

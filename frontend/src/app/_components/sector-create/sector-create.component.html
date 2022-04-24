@@ -1,0 +1,57 @@
+<div class="col-md-6 offset-md-3">
+    <br><br>
+
+
+    <button (click)="goToSectorList()" class="btn btn-info" style="margin-left: 5px" >List Service</button>
+
+    <br><br>
+    <form (ngSubmit) = "onSubmit()">
+        <h3> Create Service </h3>
+    
+        <div class="form-group">
+            <label>Service Name</label>
+            <input type="text" class ="form-control" id = "sectorName" placeholder="Enter a Service Name"
+                [(ngModel)] = "sector.sectorName" name = "sectorName">
+        </div>
+
+        <div class="form-group">
+            <label>Select Service Category</label>
+            <select class="form-control"  [(ngModel)]="sector.level" name="level" (change)="reloadSubLevel($event)">
+                <option [ngValue]="null" [selected]="true" disabled>Choose your Category</option>
+                <option *ngFor="let level of levels" [ngValue]="level.id" [value]="level.id">
+                    {{ level.levelName }}
+                   </option>
+              </select>
+        </div>
+
+        <div class="form-group">
+            <label>Select Service Sub Category</label>
+            <select class="form-control"  [(ngModel)]="sector.subLevel" name="subLevel" (change)="reloadSubSubLevel($event)">
+                <option [ngValue]="null" [selected]="true" disabled>Choose your Sub Category</option>
+                <option *ngFor="let sublevel of subLevels" [ngValue]="sublevel.id" [value]="sublevel.id">
+                    {{ sublevel.subLevelName }}
+                   </option>
+              </select>
+        </div>
+
+        <div class="form-group">
+            <label>Select Service Sub Sub Category</label>
+            <select class="form-control"  [(ngModel)]="sector.subSubLevel" name="subSubLevel">
+                <option [ngValue]="null" [selected]="true" disabled>Choose your Sub Sub Category</option>
+                <option *ngFor="let subSubLevel of subSubLevels" [ngValue]="subSubLevel.id" [value]="subSubLevel.id">
+                    {{ subSubLevel.subSubLevelName }}
+                   </option>
+              </select>
+        </div>
+
+        <div class="form-group" style="padding-left: 20px;" >
+            <input class="form-check-input" type="checkbox" [(ngModel)] = "sector.isCheckedTerms" name="isCheckedTerms" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Agree Terms and Condition?
+            </label>
+          </div>
+        
+        <button class = "btn btn-success" type ="submit">Submit</button>
+    
+    </form>
+    </div> 

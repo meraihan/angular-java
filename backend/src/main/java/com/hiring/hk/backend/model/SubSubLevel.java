@@ -5,13 +5,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @Entity
 @Table(name = "sub_sub_level")
 @NoArgsConstructor
 @AllArgsConstructor
-public class SubSubLevel {
+public class SubSubLevel implements Serializable {
+
+    private static final long serialVersionUID = 2314151453437311818L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
