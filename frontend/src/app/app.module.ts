@@ -8,13 +8,15 @@ import { SectorListComponent } from './_components/sector-list/sector-list.compo
 import { HomeComponent } from './_components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { SectorUpdateComponent } from './_components/sector-update/sector-update.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SectorCreateComponent,
     SectorListComponent,
-    HomeComponent
+    HomeComponent,
+    SectorUpdateComponent
   ],
   imports: [
     BrowserModule,

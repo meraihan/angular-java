@@ -18,7 +18,7 @@
             <label>Select Service Category</label>
             <select class="form-control"  [(ngModel)]="sector.level" name="level" (change)="reloadSubLevel($event)">
                 <option [ngValue]="null" [selected]="true" disabled>Choose your Category</option>
-                <option *ngFor="let level of levels" [ngValue]="level.id" [value]="level.id">
+                <option *ngFor="let level of levels" [ngValue]="level" [value]="level.id">
                     {{ level.levelName }}
                    </option>
               </select>
@@ -28,8 +28,8 @@
             <label>Select Service Sub Category</label>
             <select class="form-control"  [(ngModel)]="sector.subLevel" name="subLevel" (change)="reloadSubSubLevel($event)">
                 <option [ngValue]="null" [selected]="true" disabled>Choose your Sub Category</option>
-                <option *ngFor="let sublevel of subLevels" [ngValue]="sublevel.id" [value]="sublevel.id">
-                    {{ sublevel.subLevelName }}
+                <option *ngFor="let subLevel of subLevels" [ngValue]="subLevel" [value]="subLevel.id">
+                    {{ subLevel.subLevelName }}
                    </option>
               </select>
         </div>
@@ -38,7 +38,7 @@
             <label>Select Service Sub Sub Category</label>
             <select class="form-control"  [(ngModel)]="sector.subSubLevel" name="subSubLevel">
                 <option [ngValue]="null" [selected]="true" disabled>Choose your Sub Sub Category</option>
-                <option *ngFor="let subSubLevel of subSubLevels" [ngValue]="subSubLevel.id" [value]="subSubLevel.id">
+                <option *ngFor="let subSubLevel of subSubLevels" [ngValue]="subSubLevel" [value]="subSubLevel.id">
                     {{ subSubLevel.subSubLevelName }}
                    </option>
               </select>

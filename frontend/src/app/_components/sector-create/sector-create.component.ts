@@ -48,7 +48,6 @@ export class SectorCreateComponent implements OnInit {
   reloadLevel(){
     this.sectorService.getLevels().subscribe(data => {
       this.levels = data;
-      console.log(this.levels);
     });
   }
 
@@ -58,9 +57,7 @@ export class SectorCreateComponent implements OnInit {
 
   reloadSubLevel(subLevel: any){
     let getValue = subLevel.target.value;
-    // console.log(getValue.target[0]);
-    let levelId = getValue.substring(0, 1);
-    this.sectorService.getSubLevels(levelId).subscribe(data => {
+    this.sectorService.getSubLevels(getValue).subscribe(data => {
       this.subLevels = data;
       console.log(this.subLevels);
     });
@@ -69,9 +66,7 @@ export class SectorCreateComponent implements OnInit {
 
   reloadSubSubLevel(subSubLevel: any){
     let getValue = subSubLevel.target.value;
-    let subLevelId = getValue.substring(getValue.indexOf(':') + 1)
-    this.sectorService.getSubSubLevels(subLevelId).subscribe(data => {
-      console.log(data);
+    this.sectorService.getSubSubLevels(getValue).subscribe(data => {
       this.subSubLevels = data;
       console.log(this.subSubLevels);
     });

@@ -406,6 +406,7 @@ public class InitDataService {
             sectors.setLevel(saveLevel1);
             sectors.setSubLevel(saveSubLevel3);
             sectors.setSubSubLevel(saveSubSubLevel);
+            sectors.setIsCheckedTerms(Boolean.TRUE);
             sectorRepo.save(sectors);
         }
 

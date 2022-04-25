@@ -36,6 +36,17 @@ public class SectorController {
         return sectorService.add(sector);
     }
 
+    @PutMapping(value = "/{id}")
+    public Sectors update(@PathVariable Long id, @RequestBody Sectors sector) {
+        sector.setId(id);
+        return sectorService.add(sector);
+    }
+
+    @GetMapping(value = "/{id}")
+    public Sectors getById(@PathVariable Long id) {
+        return sectorService.getById(id);
+    }
+
     @GetMapping("/level")
     public List<Level> getAll() {
         return sectorService.getAllLevel();
