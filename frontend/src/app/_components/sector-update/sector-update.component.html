@@ -5,8 +5,8 @@
     <button (click)="goToSectorList()" class="btn btn-info" style="margin-left: 5px" >List Service</button>
 
     <br><br>
-    <form (ngSubmit) = "onSubmit()" >
-        <h3> Create Service </h3>
+    <form (ngSubmit) = "onSubmit()">
+        <h3> Update Service </h3>
     
         <div class="form-group">
             <label>Service Name</label>
@@ -16,7 +16,7 @@
 
         <div class="form-group">
             <label>Select Service Category</label>
-            <select class="form-control" [(ngModel)]="sector.level" name="level" (change)="reloadSubLevel($event)">
+            <select class="form-control"  [(ngModel)]="sector.level" name="level" (change)="reloadSubLevel($event)">
                 <option [ngValue]="null" [selected]="true" disabled>Choose your Category</option>
                 <option *ngFor="let level of levels" [ngValue]="level" [value]="level.id">
                     {{ level.levelName }}

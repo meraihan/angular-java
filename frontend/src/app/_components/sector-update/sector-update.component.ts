@@ -1,48 +1,44 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Level } from 'src/app/_model/Level';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Sector } from 'src/app/_model/Sector';
-import { SubLevel } from 'src/app/_model/SubLevel';
-import { SubSubLevel } from 'src/app/_model/SubSubLevel';
 import { SectorService } from 'src/app/_services/sector.service';
 
 @Component({
-  selector: 'app-sector-create',
-  templateUrl: './sector-create.component.html',
-  styleUrls: ['./sector-create.component.css']
+  selector: 'app-sector-update',
+  templateUrl: './sector-update.component.html',
+  styleUrls: ['./sector-update.component.css']
 })
-export class SectorCreateComponent implements OnInit {
+export class SectorUpdateComponent implements OnInit {
+
+  id!: number;
   sector: Sector = new Sector();
+
   levels!: any[]; 
   subLevels!:any[];
   subSubLevels!:any[];
 
+
   constructor(private sectorService: SectorService,
+    private route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.params['id'];
     this.reloadLevel();
+    this.sectorService.getSectorById(this.id).subscribe(data => {
+      this.sector = data;
+    }, error => console.log(error));
   }
 
-  saveSector(){
-    this.sectorService.createSector(this.sector).subscribe( data =>{
-      console.log(data);
+  onSubmit(){
+    this.sectorService.updateSector(this.id, this.sector).subscribe( data =>{
       this.goToSectorList();
-    },
-    error => console.log(error));
+    }
+    , error => console.log(error));
   }
 
   goToSectorList(){
     this.router.navigate(['sectors']);
-  }
-
-  createSector(){
-    this.router.navigate(['create-sector']);
-  }
-  
-  onSubmit(){
-    console.log(this.sector);
-    this.saveSector();
   }
 
   reloadLevel(){
@@ -51,14 +47,10 @@ export class SectorCreateComponent implements OnInit {
     });
   }
 
-  updateUser(id: number){
-    this.router.navigate(['update-user', id]);
-  }
 
   reloadSubLevel(subLevel: any){
     let getValue = subLevel.target.value;
     this.sectorService.getSubLevels(getValue).subscribe(data => {
-      console.log(data);
       this.subLevels = data;
       console.log(this.subLevels);
     });
@@ -67,7 +59,6 @@ export class SectorCreateComponent implements OnInit {
 
   reloadSubSubLevel(subSubLevel: any){
     let getValue = subSubLevel.target.value;
-    // console.log("Rai"+ getValue.substring(0, getValue.indexOf(":")));
     this.sectorService.getSubSubLevels(getValue).subscribe(data => {
       this.subSubLevels = data;
       console.log(this.subSubLevels);
